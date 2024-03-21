@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-    .then(() => console.log("Database is connected"))
-    .catch((err) => console.log(`Database connection error : ${err}`));
+// Assuming the URI is stored in an environment variable called MONGODB_URI
+const uri = process.env.MONGODB_URI;
+
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("Error connecting to MongoDB:", error));
